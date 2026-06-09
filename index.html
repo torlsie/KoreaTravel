@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#12423f">
+  <title>韓國釜山 5 日行程</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__copy">
+      <p class="eyebrow">桃園出發｜大邱進出｜釜山・慶州・浦項</p>
+      <h1>韓國釜山 5 日輕鬆玩</h1>
+      <p class="hero__dates">德威航空 TW664 / TW663，依 PDF 行程整理</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="quick-panel" aria-label="快速工具">
+      <a class="quick-action" href="https://www.visitbusan.net/" target="_blank" rel="noopener">
+        <span class="quick-action__label">旅遊資訊</span>
+        <span class="quick-action__value">開啟 Visit Busan 官方旅遊網站</span>
+      </a>
+    </section>
+
+    <section class="weather-panel" aria-label="釜山三日天氣">
+      <div class="section-head">
+        <h2>釜山 3 日天氣</h2>
+        <span id="weatherStatus">讀取中</span>
+      </div>
+      <div class="weather-grid" id="weatherGrid" aria-live="polite">
+        <div class="weather-card weather-card--loading">正在連線取得釜山天氣</div>
+      </div>
+      <a class="sub-link" href="https://www.kma.go.kr/eng/index.jsp" target="_blank" rel="noopener">韓國氣象廳</a>
+    </section>
+
+    <section class="tool-grid">
+      <div class="tool">
+        <div class="section-head">
+          <h2>韓幣換台幣</h2>
+          <span id="rateStatus">讀取匯率中</span>
+        </div>
+        <div class="converter">
+          <label>
+            <span>韓幣 KRW</span>
+            <input id="krwInput" inputmode="decimal" type="number" min="0" step="1000" value="100000">
+          </label>
+          <label>
+            <span>1 KRW = TWD</span>
+            <input id="rateInput" inputmode="decimal" type="number" min="0" step="0.0001" value="0.0225">
+          </label>
+          <div class="result" aria-live="polite">
+            <span>約合台幣</span>
+            <strong id="twdResult">NT$2,250</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="tool flight-card" id="flightCard">
+        <div class="section-head">
+          <h2>航班與集合</h2>
+          <span>桃園國際機場</span>
+        </div>
+        <ul class="compact-list">
+          <li><strong>集合</strong><span>預設 2026/06/25 23:30，配合凌晨航班辦理報到</span></li>
+          <li><strong>去程</strong><span>Day 1 德威航空 TW664 桃園 TPE → 大邱 TAE，02:00 - 05:25</span></li>
+          <li><strong>回程</strong><span>Day 5 德威航空 TW663 大邱 TAE → 桃園 TPE，22:40 - 00:15+1</span></li>
+        </ul>
+        <div class="countdown" aria-live="polite">
+          <span class="countdown__label">距離集合還有</span>
+          <strong class="countdown__time" id="gatheringCountdown">計算中</strong>
+          <span class="countdown__target">目標：2026/06/25 23:30（台灣時間）</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="itinerary" aria-label="五日行程">
+      <div class="section-head">
+        <h2>5 日行程</h2>
+        <span>點選日期切換內容</span>
+      </div>
+      <div class="tabs" role="tablist" aria-label="5 日行程切換">
+        <button class="tab is-active" id="tab-day1" role="tab" aria-selected="true" aria-controls="day1" data-day="day1">第 1 日</button>
+        <button class="tab" id="tab-day2" role="tab" aria-selected="false" aria-controls="day2" data-day="day2">第 2 日</button>
+        <button class="tab" id="tab-day3" role="tab" aria-selected="false" aria-controls="day3" data-day="day3">第 3 日</button>
+        <button class="tab" id="tab-day4" role="tab" aria-selected="false" aria-controls="day4" data-day="day4">第 4 日</button>
+        <button class="tab" id="tab-day5" role="tab" aria-selected="false" aria-controls="day5" data-day="day5">第 5 日</button>
+      </div>
+
+      <article class="day is-active" id="day1" role="tabpanel" aria-labelledby="tab-day1">
+        <div class="day__title">
+          <p>桃園國際機場 → 大邱國際機場</p>
+          <h3>汗蒸幕、大邱近代胡同、青羅之丘、西門市場、百年韓屋星巴克</h3>
+        </div>
+        <ol class="timeline">
+          <li><time>凌晨</time><span>桃園集合，搭乘德威航空 TW664 前往大邱，抵達後展開旅程。</span></li>
+          <li><time>上午</time><span>體驗韓式汗蒸幕，放鬆飛行後的疲勞。</span></li>
+          <li><time>午後</time><span>走訪大邱近代胡同、青羅之丘、桂山洞聖堂，感受近代文化街區。</span></li>
+          <li><time>傍晚</time><span>西門市場自由逛吃，再到大邱百年韓屋星巴克拍照休息。</span></li>
+        </ol>
+        <div class="day__meta">
+          <span>早餐：紫菜包飯+飲料</span>
+          <span>午餐：自理</span>
+          <span>晚餐：年糕自助吃到飽</span>
+          <span>住宿：TT Gupo Hotel 或同級</span>
+        </div>
+      </article>
+
+      <article class="day" id="day2" role="tabpanel" aria-labelledby="tab-day2" hidden>
+        <div class="day__title">
+          <p>釜山經典文化村與海岸線</p>
+          <h3>甘川洞文化村、太宗臺、白淺灘文化村、松島天空步道、西面商圈</h3>
+        </div>
+        <ol class="timeline">
+          <li><time>上午</time><span>前往甘川洞文化村，穿梭彩色山城巷弄與藝術裝置。</span></li>
+          <li><time>中午</time><span>太宗臺含門票與小火車，欣賞峭壁、燈塔與海岸景色。</span></li>
+          <li><time>午後</time><span>白淺灘文化村與松島天空步道，安排海景散步與拍照。</span></li>
+          <li><time>晚上</time><span>西面商圈自由活動，適合逛街、咖啡、宵夜。</span></li>
+        </ol>
+        <div class="day__meta">
+          <span>早餐：酒店內用</span>
+          <span>午餐：韓式燒烤吃到飽</span>
+          <span>晚餐：自理</span>
+          <span>住宿：TT Gupo Hotel 或同級</span>
+        </div>
+      </article>
+
+      <article class="day" id="day3" role="tabpanel" aria-labelledby="tab-day3" hidden>
+        <div class="day__title">
+          <p>海雲台藍線與夜景</p>
+          <h3>天空膠囊列車、青沙浦、機張海鮮市場、海東龍宮寺、The Bay 101</h3>
+        </div>
+        <ol class="timeline">
+          <li><time>上午</time><span>搭乘天空膠囊列車單程尾浦站至青沙浦站，沿海慢速欣賞海雲台。</span></li>
+          <li><time>中午</time><span>青沙浦最美鐵道、紅白燈塔與踏石天空步道。</span></li>
+          <li><time>午後</time><span>機張海鮮市場與海東龍宮寺，感受市場活力與海邊寺院景觀。</span></li>
+          <li><time>晚上</time><span>The Bay 101 欣賞釜山夜景。</span></li>
+        </ol>
+        <div class="spotlight">
+          <h4>備註</h4>
+          <p>如遇天候不佳或公休，天空膠囊列車將依行程說明改以海雲台海岸列車替代。</p>
+        </div>
+        <div class="day__meta">
+          <span>早餐：酒店內用</span>
+          <span>午餐：自理</span>
+          <span>晚餐：釜山豬湯飯</span>
+          <span>住宿：TT Gupo Hotel 或同級</span>
+        </div>
+      </article>
+
+      <article class="day" id="day4" role="tabpanel" aria-labelledby="tab-day4" hidden>
+        <div class="day__title">
+          <p>韓國文化體驗與南浦洞</p>
+          <h3>DIY 泡菜、韓式點心、海苔博物館、韓服體驗、札嘎其市場、BIFF 廣場</h3>
+        </div>
+        <ol class="timeline">
+          <li><time>上午</time><span>韓國文化體驗：DIY 泡菜、韓式點心、海苔博物館與韓服體驗。</span></li>
+          <li><time>中午</time><span>前往彩妝店購物站，選購韓系保養和彩妝。</span></li>
+          <li><time>午後</time><span>札嘎其市場與南浦鬧區，體驗釜山代表性市場與商圈。</span></li>
+          <li><time>晚上</time><span>BIFF 國際電影廣場自由逛街，品嘗街頭小吃。</span></li>
+        </ol>
+        <div class="day__meta">
+          <span>早餐：酒店內用</span>
+          <span>午餐：人蔘雞</span>
+          <span>晚餐：自理</span>
+          <span>住宿：TT Gupo Hotel 或同級</span>
+        </div>
+      </article>
+
+      <article class="day" id="day5" role="tabpanel" aria-labelledby="tab-day5" hidden>
+        <div class="day__title">
+          <p>慶州・浦項・大邱 → 桃園</p>
+          <h3>佛國寺、瞻星台、皇理團路、浦項 Space Walk、大邱東城路商圈</h3>
+        </div>
+        <ol class="timeline">
+          <li><time>上午</time><span>佛國寺世界文化遺產與瞻星台，走訪慶州代表古蹟。</span></li>
+          <li><time>中午</time><span>韓屋星巴克與皇理團路，感受慶州新復古街區。</span></li>
+          <li><time>午後</time><span>浦項環湖公園 Space Walk，再前往大邱東城路商圈。</span></li>
+          <li><time>晚上</time><span>前往大邱國際機場，搭乘 TW663 返回桃園。</span></li>
+        </ol>
+        <div class="day__meta">
+          <span>早餐：酒店內用</span>
+          <span>午餐：馬鈴薯燉豬骨湯+小菜</span>
+          <span>晚餐：自理</span>
+          <span>住宿：溫暖的家</span>
+        </div>
+      </article>
+    </section>
+
+    <section class="notice">
+      <div class="section-head">
+        <h2>提醒事項</h2>
+      </div>
+      <ul>
+        <li>韓國比台灣快 1 小時，全國同一時區。</li>
+        <li>托運行李 20 公斤、手提行李 10 公斤；請以航空公司現場規定為準。</li>
+        <li>韓國多使用 220V、2 孔圓形插座，建議自備轉接頭。</li>
+        <li>飯店響應環保，請自備牙刷、牙膏、刮鬍刀、梳子與個人藥品。</li>
+      </ul>
+    </section>
+
+    <section class="contact-panel" aria-label="聯絡資訊">
+      <div class="section-head">
+        <h2>聯絡資訊</h2>
+      </div>
+      <a class="contact-link" href="tel:+886933385392">協助人員：0933-385392</a>
+    </section>
+
+    <footer>
+      <span>行程內容依提供之 PDF 摘要整理。頁首照片來源：Wikimedia Commons / KOGL Type 1。</span>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
