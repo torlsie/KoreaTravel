@@ -26,6 +26,27 @@ const rateStatus = document.querySelector("#rateStatus");
 const weatherGrid = document.querySelector("#weatherGrid");
 const weatherStatus = document.querySelector("#weatherStatus");
 const countdownOutput = document.querySelector("#gatheringCountdown");
+const transferTimeText = "去程機場接送時間：2026/07/09 21:00";
+
+function renderTransferPickupTime() {
+  const firstFlightItem = document.querySelector(".flight-card .compact-list li:first-child");
+  const countdownLabel = document.querySelector(".countdown__label");
+  const countdownTarget = document.querySelector(".countdown__target");
+
+  if (firstFlightItem) {
+    firstFlightItem.innerHTML = `<strong>接送</strong><span>${transferTimeText}</span>`;
+  }
+
+  if (countdownLabel) {
+    countdownLabel.textContent = "距離去程接送還有";
+  }
+
+  if (countdownTarget) {
+    countdownTarget.textContent = "目標：115/07/09 21:00（台灣時間）";
+  }
+}
+
+renderTransferPickupTime();
 
 function formatTwd(value) {
   return new Intl.NumberFormat("zh-TW", {
@@ -151,7 +172,7 @@ async function loadWeather() {
 loadWeather();
 
 function setupGatheringCountdown() {
-  const target = new Date("2026-06-25T23:30:00+08:00").getTime();
+  const target = new Date("2026-07-09T21:00:00+08:00").getTime();
 
   function pad(value) {
     return String(value).padStart(2, "0");
@@ -161,7 +182,7 @@ function setupGatheringCountdown() {
     const diff = target - Date.now();
 
     if (diff <= 0) {
-      countdownOutput.textContent = "集合時間已到";
+      countdownOutput.textContent = "接送時間已到";
       return;
     }
 
