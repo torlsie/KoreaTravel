@@ -126,7 +126,27 @@ function formatWeatherDate(value) {
     month: "numeric",
     day: "numeric",
     weekday: "short"
-  }).format(new Date(`${value}T00:00:00+09:00`));
+  }).format(new Date(`${value}T00:00:00+08:00`));
+}
+
+function formatApiDate(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+function getWeatherDateRange() {
+  const start = new Date();
+  start.setHours(0, 0, 0, 0);
+
+  const end = new Date(start);
+  end.setDate(start.getDate() + 2);
+
+  return {
+    startDate: formatApiDate(start),
+    endDate: formatApiDate(end)
+  };
 }
 
 function renderWeather(data) {
@@ -150,7 +170,8 @@ function renderWeather(data) {
 }
 
 async function loadWeather() {
-  const endpoint = "https://api.open-meteo.com/v1/forecast?latitude=35.1796&longitude=129.0756&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FSeoul&forecast_days=3";
+  const { startDate, endDate } = getWeatherDateRange();
+  const endpoint = `https://api.open-meteo.com/v1/forecast?latitude=35.1796&longitude=129.0756&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FSeoul&start_date=${startDate}&end_date=${endDate}&_=${Date.now()}`;
 
   try {
     const response = await fetch(endpoint, { cache: "no-store" });
@@ -158,7 +179,7 @@ async function loadWeather() {
 
     const data = await response.json();
     renderWeather(data);
-    weatherStatus.textContent = "已更新";
+    weatherStatus.textContent = `已更新 ${formatWeatherDate(startDate)}-${formatWeatherDate(endDate)}`;
   } catch {
     weatherStatus.textContent = "無法自動讀取";
     weatherGrid.innerHTML = `
