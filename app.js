@@ -70,10 +70,7 @@ async function loadRate() {
 
   for (const endpoint of endpoints) {
     try {
-      const response = await fetch(endpoint, { cache: "no-store" });
-      if (!response.ok) continue;
-
-      const data = await response.json();
+      const data = await fetchJsonWithTimeout(endpoint, 5000);
       const rate = Number(data?.krw?.twd);
       if (!rate) continue;
 
@@ -121,6 +118,22 @@ const weatherLabels = new Map([
   [99, "強雷雨冰雹"]
 ]);
 
+const wttrLabels = new Map([
+  ["sunny", "晴朗"],
+  ["clear", "晴朗"],
+  ["partly cloudy", "局部多雲"],
+  ["cloudy", "多雲"],
+  ["overcast", "陰天"],
+  ["mist", "薄霧"],
+  ["fog", "霧"],
+  ["patchy rain nearby", "局部有雨"],
+  ["light rain shower", "小陣雨"],
+  ["light rain", "小雨"],
+  ["moderate rain", "降雨"],
+  ["heavy rain", "大雨"],
+  ["thundery outbreaks possible", "可能雷雨"]
+]);
+
 function formatWeatherDate(value) {
   return new Intl.DateTimeFormat("zh-TW", {
     month: "numeric",
@@ -149,7 +162,23 @@ function getWeatherDateRange() {
   };
 }
 
-function renderWeather(data) {
+async function fetchJsonWithTimeout(url, timeoutMs = 5000) {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+
+  try {
+    const response = await fetch(url, {
+      cache: "no-store",
+      signal: controller.signal
+    });
+    if (!response.ok) throw new Error(`request failed: ${response.status}`);
+    return await response.json();
+  } finally {
+    clearTimeout(timeoutId);
+  }
+}
+
+function renderOpenMeteoWeather(data) {
   const daily = data.daily;
   weatherGrid.innerHTML = daily.time.map((date, index) => {
     const max = Math.round(daily.temperature_2m_max[index]);
@@ -169,25 +198,71 @@ function renderWeather(data) {
   }).join("");
 }
 
+function getMaxRainChance(hourly = []) {
+  return hourly.reduce((max, item) => {
+    const chance = Number(item.chanceofrain);
+    return Number.isFinite(chance) ? Math.max(max, chance) : max;
+  }, 0);
+}
+
+function renderWttrWeather(data) {
+  const weather = Array.isArray(data.weather) ? data.weather.slice(0, 3) : [];
+  if (weather.length === 0) throw new Error("wttr weather unavailable");
+
+  weatherGrid.innerHTML = weather.map((day) => {
+    const noon = day.hourly?.find((item) => item.time === "1200") || day.hourly?.[4] || day.hourly?.[0] || {};
+    const rawDesc = noon.weatherDesc?.[0]?.value?.trim() || "Weather";
+    const desc = wttrLabels.get(rawDesc.toLowerCase()) || rawDesc;
+    const rain = getMaxRainChance(day.hourly);
+
+    return `
+      <article class="weather-card">
+        <span class="weather-card__date">${formatWeatherDate(day.date)}</span>
+        <strong class="weather-card__main">${day.mintempC}-${day.maxtempC}°C</strong>
+        <span class="weather-card__desc">${desc}</span>
+        <span class="weather-card__rain">降雨機率 ${rain}%</span>
+      </article>
+    `;
+  }).join("");
+}
+
 async function loadWeather() {
   const { startDate, endDate } = getWeatherDateRange();
-  const endpoint = `https://api.open-meteo.com/v1/forecast?latitude=35.1796&longitude=129.0756&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FSeoul&start_date=${startDate}&end_date=${endDate}&_=${Date.now()}`;
+  const cacheBust = Date.now();
+  const providers = [
+    {
+      name: "Open-Meteo",
+      url: `https://api.open-meteo.com/v1/forecast?latitude=35.1796&longitude=129.0756&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FSeoul&start_date=${startDate}&end_date=${endDate}&_=${cacheBust}`,
+      timeout: 5000,
+      render: renderOpenMeteoWeather,
+      suffix: ""
+    },
+    {
+      name: "wttr.in",
+      url: `https://wttr.in/Busan?format=j1&_=${cacheBust}`,
+      timeout: 8000,
+      render: renderWttrWeather,
+      suffix: "（備援）"
+    }
+  ];
 
-  try {
-    const response = await fetch(endpoint, { cache: "no-store" });
-    if (!response.ok) throw new Error("weather unavailable");
-
-    const data = await response.json();
-    renderWeather(data);
-    weatherStatus.textContent = `已更新 ${formatWeatherDate(startDate)}-${formatWeatherDate(endDate)}`;
-  } catch {
-    weatherStatus.textContent = "無法自動讀取";
-    weatherGrid.innerHTML = `
-      <a class="weather-card weather-card--loading" href="https://www.kma.go.kr/eng/index.jsp" target="_blank" rel="noopener">
-        天氣連線暫時失敗，點此開啟韓國氣象廳查詢釜山天氣。
-      </a>
-    `;
+  for (const provider of providers) {
+    try {
+      const data = await fetchJsonWithTimeout(provider.url, provider.timeout);
+      provider.render(data);
+      weatherStatus.textContent = `已更新 ${formatWeatherDate(startDate)}-${formatWeatherDate(endDate)}${provider.suffix}`;
+      return;
+    } catch (error) {
+      console.warn(`${provider.name} weather failed`, error);
+    }
   }
+
+  weatherStatus.textContent = "無法自動讀取";
+  weatherGrid.innerHTML = `
+    <a class="weather-card weather-card--loading" href="https://www.kma.go.kr/eng/index.jsp" target="_blank" rel="noopener">
+      天氣連線暫時失敗，點此開啟韓國氣象廳查詢釜山天氣。
+    </a>
+  `;
 }
 
 loadWeather();
