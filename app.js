@@ -163,19 +163,16 @@ function getWeatherDateRange() {
 }
 
 async function fetchJsonWithTimeout(url, timeoutMs = 5000) {
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
-
-  try {
-    const response = await fetch(url, {
-      cache: "no-store",
-      signal: controller.signal
-    });
+  const request = fetch(url, { cache: "no-store" }).then((response) => {
     if (!response.ok) throw new Error(`request failed: ${response.status}`);
-    return await response.json();
-  } finally {
-    clearTimeout(timeoutId);
-  }
+    return response.json();
+  });
+
+  const timeout = new Promise((_, reject) => {
+    setTimeout(() => reject(new Error("request timeout")), timeoutMs);
+  });
+
+  return Promise.race([request, timeout]);
 }
 
 function renderOpenMeteoWeather(data) {
