@@ -42,7 +42,7 @@ function renderTransferPickupTime() {
   }
 
   if (countdownTarget) {
-    countdownTarget.textContent = "目標：115/07/09 21:00（台灣時間）";
+    countdownTarget.textContent = "目標：2026/07/09 21:00（台灣時間）";
   }
 }
 
@@ -285,7 +285,7 @@ function setupGatheringCountdown() {
     const minutes = Math.floor((totalSeconds % 3600) / 60);
     const seconds = totalSeconds % 60;
 
-    countdownOutput.textContent = `${countdownDays} 天 ${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+    countdownOutput.textContent = `${countdownDays} 天 ${pad(hours)} 時 ${pad(minutes)} 分 ${pad(seconds)} 秒`;
   }
 
   renderCountdown();
