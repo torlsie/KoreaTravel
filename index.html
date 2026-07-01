@@ -5,25 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#12423f">
   <title>韓國釜山 5 日行程</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20260702">
+  <style>
+    .exchange-panel,.itinerary,.notice,.contact-panel{margin-top:12px}.notice-summary{display:grid;gap:4px;margin-bottom:12px;border:1px solid #ead9a7;border-radius:8px;padding:12px;background:#fff8e8}.notice-summary strong{color:#76500e}details{border:1px solid var(--line);border-radius:8px;background:#fbfcfb}details+details{margin-top:10px}summary{min-height:46px;display:flex;align-items:center;padding:10px 12px;color:var(--green);font-weight:850;cursor:pointer}details ul{padding:0 16px 14px 1.45rem}.fine-print{margin:12px 0 0;color:var(--muted);font-size:.88rem}
+  </style>
 </head>
 <body>
   <header class="hero">
     <div class="hero__copy">
-      <p class="eyebrow">桃園出發｜大邱進出｜釜山・慶州・浦項</p>
-      <h1>韓國釜山 5 日輕鬆玩</h1>
-      <p class="hero__dates">德威航空 TW664 / TW663，依 PDF 行程整理</p>
+      <p class="eyebrow">0709-13 說明會資料版｜桃園出發｜大邱進出</p>
+      <h1>韓國釜山 5 日行程</h1>
+      <p class="hero__dates">釜山・大邱・慶州・浦項｜德威航空 TW664 / TW663</p>
     </div>
   </header>
 
   <main>
-    <section class="quick-panel" aria-label="快速工具">
-      <a class="quick-action" href="https://www.visitbusan.net/" target="_blank" rel="noopener">
-        <span class="quick-action__label">旅遊資訊</span>
-        <span class="quick-action__value">開啟 Visit Busan 官方旅遊網站</span>
-      </a>
-    </section>
-
     <section class="weather-panel" aria-label="釜山三日天氣">
       <div class="section-head">
         <h2>釜山 3 日天氣</h2>
@@ -35,51 +31,37 @@
       <a class="sub-link" href="https://www.kma.go.kr/eng/index.jsp" target="_blank" rel="noopener">韓國氣象廳</a>
     </section>
 
-    <section class="tool-grid">
-      <div class="tool">
-        <div class="section-head">
-          <h2>韓幣換台幣</h2>
-          <span id="rateStatus">讀取匯率中</span>
-        </div>
-        <div class="converter">
-          <label>
-            <span>韓幣 KRW</span>
-            <input id="krwInput" inputmode="decimal" type="number" min="0" step="1000" value="100000">
-          </label>
-          <label>
-            <span>1 KRW = TWD</span>
-            <input id="rateInput" inputmode="decimal" type="number" min="0" step="0.0001" value="0.0225">
-          </label>
-          <div class="result" aria-live="polite">
-            <span>約合台幣</span>
-            <strong id="twdResult">NT$2,250</strong>
-          </div>
-        </div>
+    <section class="tool exchange-panel" aria-label="韓幣換台幣">
+      <div class="section-head">
+        <h2>韓幣換台幣</h2>
+        <span id="rateStatus">讀取匯率中</span>
       </div>
-
-      <div class="tool flight-card" id="flightCard">
-        <div class="section-head">
-          <h2>航班與集合</h2>
-          <span>桃園國際機場</span>
-        </div>
-        <ul class="compact-list">
-          <li><strong>集合</strong><span>預設 2026/06/25 23:30，配合凌晨航班辦理報到</span></li>
-          <li><strong>去程</strong><span>Day 1 德威航空 TW664 桃園 TPE → 大邱 TAE，02:00 - 05:25</span></li>
-          <li><strong>回程</strong><span>Day 5 德威航空 TW663 大邱 TAE → 桃園 TPE，22:40 - 00:15+1</span></li>
-        </ul>
-        <div class="countdown" aria-live="polite">
-          <span class="countdown__label">距離集合還有</span>
-          <strong class="countdown__time" id="gatheringCountdown">計算中</strong>
-          <span class="countdown__target">目標：2026/06/25 23:30（台灣時間）</span>
-        </div>
+      <div class="converter">
+        <label><span>韓幣 KRW</span><input id="krwInput" inputmode="decimal" type="number" min="0" step="1000" value="100000"></label>
+        <label><span>1 KRW = TWD</span><input id="rateInput" inputmode="decimal" type="number" min="0" step="0.0001" value="0.0225"></label>
+        <div class="result" aria-live="polite"><span>約合台幣</span><strong id="twdResult">NT$2,250</strong></div>
       </div>
     </section>
 
-    <section class="itinerary" aria-label="五日行程">
-      <div class="section-head">
-        <h2>5 日行程</h2>
-        <span>點選日期切換內容</span>
+    <section class="tool flight-card" id="flightCard" aria-label="航班與集合">
+      <div class="section-head"><h2>航班與集合</h2><span>桃園第一航廈</span></div>
+      <ul class="compact-list">
+        <li><strong>接送</strong><span>去程機場接送時間：2026/07/09 21:00</span></li>
+        <li><strong>報到</strong><span>PDF：2026/07/08 23:00，桃園機場第一航廈德威航空 11 號櫃檯</span></li>
+        <li><strong>去程</strong><span>Day 1 德威航空 TW664 桃園 TPE → 大邱 TAE，02:00 - 05:25</span></li>
+        <li><strong>回程</strong><span>Day 5 德威航空 TW663 大邱 TAE → 桃園 TPE，22:40 - 00:15+1</span></li>
+        <li><strong>領隊</strong><span>楊維洲先生｜0926-189627</span></li>
+      </ul>
+      <div class="countdown" aria-live="polite">
+        <span class="countdown__label">距離去程接送還有</span>
+        <strong class="countdown__time" id="gatheringCountdown">計算中</strong>
+        <span class="countdown__target">目標：2026/07/09 21:00（台灣時間）</span>
       </div>
+      <p class="fine-print">說明會 PDF 回程時間列為 22:50 - 00:25+1；本頁依你指定時間顯示，最終請以領隊與航空公司通知為準。</p>
+    </section>
+
+    <section class="itinerary" aria-label="五日行程">
+      <div class="section-head"><h2>5 日行程</h2><span>含早午晚餐與飯店</span></div>
       <div class="tabs" role="tablist" aria-label="5 日行程切換">
         <button class="tab is-active" id="tab-day1" role="tab" aria-selected="true" aria-controls="day1" data-day="day1">第 1 日</button>
         <button class="tab" id="tab-day2" role="tab" aria-selected="false" aria-controls="day2" data-day="day2">第 2 日</button>
@@ -89,129 +71,57 @@
       </div>
 
       <article class="day is-active" id="day1" role="tabpanel" aria-labelledby="tab-day1">
-        <div class="day__title">
-          <p>桃園國際機場 → 大邱國際機場</p>
-          <h3>汗蒸幕、大邱近代胡同、青羅之丘、西門市場、百年韓屋星巴克</h3>
-        </div>
-        <ol class="timeline">
-          <li><time>凌晨</time><span>桃園集合，搭乘德威航空 TW664 前往大邱，抵達後展開旅程。</span></li>
-          <li><time>上午</time><span>體驗韓式汗蒸幕，放鬆飛行後的疲勞。</span></li>
-          <li><time>午後</time><span>走訪大邱近代胡同、青羅之丘、桂山洞聖堂，感受近代文化街區。</span></li>
-          <li><time>傍晚</time><span>西門市場自由逛吃，再到大邱百年韓屋星巴克拍照休息。</span></li>
-        </ol>
-        <div class="day__meta">
-          <span>早餐：紫菜包飯+飲料</span>
-          <span>午餐：自理</span>
-          <span>晚餐：年糕自助吃到飽</span>
-          <span>住宿：TT Gupo Hotel 或同級</span>
-        </div>
+        <div class="day__title"><p>2026/07/09｜抵達大邱</p><h3>大邱機場、汗蒸幕、青羅之丘、大邱桂山洞聖堂、西門市場、百年韓屋星巴克</h3></div>
+        <ol class="timeline"><li><time>清晨</time><span>抵達韓國大邱機場，通關領行李後由當地導遊舉「暢遊旅行社」牌接團。</span></li><li><time>上午</time><span>安排汗蒸幕，舒緩紅眼航班後的疲勞。</span></li><li><time>午後</time><span>走訪青羅之丘、大邱桂山洞聖堂與西門市場。</span></li><li><time>晚間</time><span>百年韓屋星巴克消費自理，晚餐安排年糕自助吃到飽。</span></li></ol>
+        <div class="day__meta"><span>早餐：紫菜包飯+飲料</span><span>午餐：方便遊玩，敬請自理</span><span>晚餐：年糕自助吃到飽</span><span>飯店：釜山 TT HOTEL（龜浦店）</span></div>
       </article>
 
       <article class="day" id="day2" role="tabpanel" aria-labelledby="tab-day2" hidden>
-        <div class="day__title">
-          <p>釜山經典文化村與海岸線</p>
-          <h3>甘川洞文化村、太宗臺、白淺灘文化村、松島天空步道、西面商圈</h3>
-        </div>
-        <ol class="timeline">
-          <li><time>上午</time><span>前往甘川洞文化村，穿梭彩色山城巷弄與藝術裝置。</span></li>
-          <li><time>中午</time><span>太宗臺含門票與小火車，欣賞峭壁、燈塔與海岸景色。</span></li>
-          <li><time>午後</time><span>白淺灘文化村與松島天空步道，安排海景散步與拍照。</span></li>
-          <li><time>晚上</time><span>西面商圈自由活動，適合逛街、咖啡、宵夜。</span></li>
-        </ol>
-        <div class="day__meta">
-          <span>早餐：酒店內用</span>
-          <span>午餐：韓式燒烤吃到飽</span>
-          <span>晚餐：自理</span>
-          <span>住宿：TT Gupo Hotel 或同級</span>
-        </div>
+        <div class="day__title"><p>2026/07/10｜釜山文化村與海岸</p><h3>甘川洞文化村、太宗臺門含小火車、白險灘文化壁畫村、松島天空步道、西面商圈</h3></div>
+        <ol class="timeline"><li><time>上午</time><span>甘川洞文化村，欣賞彩色聚落與巷弄藝術。</span></li><li><time>中午</time><span>太宗臺門含小火車，安排海岸景觀與園區遊覽。</span></li><li><time>午後</time><span>白險灘文化壁畫村與松島天空步道。</span></li><li><time>晚上</time><span>西面商圈自由逛街，用餐與採買自理。</span></li></ol>
+        <div class="day__meta"><span>早餐：酒店內</span><span>午餐：韓式烤肉吃到飽</span><span>晚餐：方便遊玩，敬請自理</span><span>飯店：釜山 TT HOTEL（龜浦店）</span></div>
       </article>
 
       <article class="day" id="day3" role="tabpanel" aria-labelledby="tab-day3" hidden>
-        <div class="day__title">
-          <p>海雲台藍線與夜景</p>
-          <h3>天空膠囊列車、青沙浦、機張海鮮市場、海東龍宮寺、The Bay 101</h3>
-        </div>
-        <ol class="timeline">
-          <li><time>上午</time><span>搭乘天空膠囊列車單程尾浦站至青沙浦站，沿海慢速欣賞海雲台。</span></li>
-          <li><time>中午</time><span>青沙浦最美鐵道、紅白燈塔與踏石天空步道。</span></li>
-          <li><time>午後</time><span>機張海鮮市場與海東龍宮寺，感受市場活力與海邊寺院景觀。</span></li>
-          <li><time>晚上</time><span>The Bay 101 欣賞釜山夜景。</span></li>
-        </ol>
-        <div class="spotlight">
-          <h4>備註</h4>
-          <p>如遇天候不佳或公休，天空膠囊列車將依行程說明改以海雲台海岸列車替代。</p>
-        </div>
-        <div class="day__meta">
-          <span>早餐：酒店內用</span>
-          <span>午餐：自理</span>
-          <span>晚餐：釜山豬湯飯</span>
-          <span>住宿：TT Gupo Hotel 或同級</span>
-        </div>
+        <div class="day__title"><p>2026/07/11｜海雲台與釜山夜景</p><h3>天空膠囊列車、青沙浦鐵道、紅白燈塔、踏石天空步道、機張市場、海東龍宮寺、The Bay 101</h3></div>
+        <ol class="timeline"><li><time>上午</time><span>天空膠囊列車單程，尾浦站至青沙浦站，四人一台。</span></li><li><time>中午</time><span>青沙浦鐵道、紅白燈塔與踏石天空步道。</span></li><li><time>午後</time><span>機張市場與海東龍宮寺。</span></li><li><time>晚上</time><span>The Bay 101 欣賞釜山夜景。</span></li></ol>
+        <div class="spotlight"><h4>行程備註</h4><p>天空膠囊列車如遇無法搭乘，將改海邊列車+飲料，敬請見諒。</p></div>
+        <div class="day__meta"><span>早餐：酒店內</span><span>午餐：方便遊玩，敬請自理</span><span>晚餐：釜山豬湯飯</span><span>飯店：釜山 TT HOTEL（龜浦店）</span></div>
       </article>
 
       <article class="day" id="day4" role="tabpanel" aria-labelledby="tab-day4" hidden>
-        <div class="day__title">
-          <p>韓國文化體驗與南浦洞</p>
-          <h3>DIY 泡菜、韓式點心、海苔博物館、韓服體驗、札嘎其市場、BIFF 廣場</h3>
-        </div>
-        <ol class="timeline">
-          <li><time>上午</time><span>韓國文化體驗：DIY 泡菜、韓式點心、海苔博物館與韓服體驗。</span></li>
-          <li><time>中午</time><span>前往彩妝店購物站，選購韓系保養和彩妝。</span></li>
-          <li><time>午後</time><span>札嘎其市場與南浦鬧區，體驗釜山代表性市場與商圈。</span></li>
-          <li><time>晚上</time><span>BIFF 國際電影廣場自由逛街，品嘗街頭小吃。</span></li>
-        </ol>
-        <div class="day__meta">
-          <span>早餐：酒店內用</span>
-          <span>午餐：人蔘雞</span>
-          <span>晚餐：自理</span>
-          <span>住宿：TT Gupo Hotel 或同級</span>
-        </div>
+        <div class="day__title"><p>2026/07/12｜韓國文化體驗與南浦</p><h3>DIY 泡菜、韓式點心、海苔博物館、韓服體驗、彩妝店、札嘎其市場、南浦鬧區、BIFF 電影廣場</h3></div>
+        <ol class="timeline"><li><time>上午</time><span>韓國文化體驗，包含 DIY 泡菜、韓式點心、海苔博物館與韓服體驗。</span></li><li><time>中午</time><span>彩妝店購物站與午餐人蔘雞。</span></li><li><time>午後</time><span>札嘎其市場、南浦鬧區。</span></li><li><time>晚上</time><span>BIFF 電影廣場自由活動。</span></li></ol>
+        <div class="day__meta"><span>早餐：酒店內</span><span>午餐：人蔘雞</span><span>晚餐：方便遊玩，敬請自理</span><span>飯店：釜山 TT HOTEL（龜浦店）</span></div>
       </article>
 
       <article class="day" id="day5" role="tabpanel" aria-labelledby="tab-day5" hidden>
-        <div class="day__title">
-          <p>慶州・浦項・大邱 → 桃園</p>
-          <h3>佛國寺、瞻星台、皇理團路、浦項 Space Walk、大邱東城路商圈</h3>
-        </div>
-        <ol class="timeline">
-          <li><time>上午</time><span>佛國寺世界文化遺產與瞻星台，走訪慶州代表古蹟。</span></li>
-          <li><time>中午</time><span>韓屋星巴克與皇理團路，感受慶州新復古街區。</span></li>
-          <li><time>午後</time><span>浦項環湖公園 Space Walk，再前往大邱東城路商圈。</span></li>
-          <li><time>晚上</time><span>前往大邱國際機場，搭乘 TW663 返回桃園。</span></li>
-        </ol>
-        <div class="day__meta">
-          <span>早餐：酒店內用</span>
-          <span>午餐：馬鈴薯燉豬骨湯+小菜</span>
-          <span>晚餐：自理</span>
-          <span>住宿：溫暖的家</span>
-        </div>
+        <div class="day__title"><p>2026/07/13｜慶州、浦項、大邱返台</p><h3>佛光寺、瞻星臺、韓屋星巴克、皇里團路、浦項環湖公園 Space Walk、大邱東城路商圈、大邱機場</h3></div>
+        <ol class="timeline"><li><time>上午</time><span>佛光寺與瞻星臺，走訪慶州代表景點。</span></li><li><time>中午</time><span>韓屋星巴克消費自理，皇里團路自由散策。</span></li><li><time>午後</time><span>浦項環湖公園 Space Walk 與大邱東城路商圈。</span></li><li><time>晚上</time><span>前往大邱機場，搭乘德威航空返回桃園。</span></li></ol>
+        <div class="day__meta"><span>早餐：酒店內</span><span>午餐：馬鈴薯燉豬骨湯+風味小菜</span><span>晚餐：方便遊玩，敬請自理</span><span>飯店：返台，翌日抵達桃園</span></div>
       </article>
     </section>
 
     <section class="notice">
-      <div class="section-head">
-        <h2>提醒事項</h2>
-      </div>
-      <ul>
-        <li>韓國比台灣快 1 小時，全國同一時區。</li>
-        <li>托運行李 20 公斤、手提行李 10 公斤；請以航空公司現場規定為準。</li>
-        <li>韓國多使用 220V、2 孔圓形插座，建議自備轉接頭。</li>
-        <li>飯店響應環保，請自備牙刷、牙膏、刮鬍刀、梳子與個人藥品。</li>
-      </ul>
+      <div class="section-head"><h2>提醒事項</h2><span>重點收折，出發前建議逐項確認</span></div>
+      <div class="notice-summary"><strong>最重要</strong><span>不要帶肉類與豬肉製品、行動電源只能隨身並需個別包裝、護照效期需 6 個月以上、飯店不提供一次性盥洗用品。</span></div>
+      <details open><summary>入境、航班與團體規定</summary><ul><li>韓國入境年滿 17 歲以上外國旅客需留下雙手食指指紋及臉部照片資料。</li><li>行程若有問題請當場反應告知領隊，以便及時處理。</li><li>本行程免付領隊/導遊小費。</li><li>團體旅遊全程不得脫隊；自由活動期間不得自行租賃並駕駛當地汽車或摩托車。</li><li>景點、活動、食宿若自行放棄，無法退費或轉讓他人使用。</li></ul></details>
+      <details open><summary>禁止攜帶與行動電源</summary><ul><li>違規攜帶肉類品入境韓國將直接開罰 20 萬元；手提行李可能 100% 檢查，請勿攜帶任何與豬肉相關食品。</li><li>德威航空行動電源需使用透明夾鏈袋個別單獨包裝，電池端與 USB 插口貼上絕緣膠帶。</li><li>行動電源須隨身攜帶，禁止放在上方置物櫃；若有過熱情形請立即通知空服員。</li><li>行動電源目前規範以 Wh 為標準，若僅標示 mAh，建議避免攜帶。</li></ul></details>
+      <details><summary>行李、證件與 Q-CODE</summary><ul><li>托運行李 20 公斤，超重需現場自費；隨身行李合計不可超過 10 公斤。</li><li>近期航空公司對團體行李超重檢查嚴格，每位旅客個別辦理 Check-in 掛行李。</li><li>如有行李遺失或損壞，請在機場立即洽詢搭乘航空櫃檯。</li><li>護照正本效期需自出發日起 6 個月以上；台灣旅客入境韓國免簽證。</li><li>2024/09/01 起入境韓國有條件免填防疫 Q-CODE；若有症狀或途經重點檢疫管理地區，請依韓國疾病管理廳公告辦理。</li></ul></details>
+      <details><summary>飯店、飲食、電壓與藥品</summary><ul><li>韓國比台灣快 1 小時，電壓 220V，插座為 2 孔圓形，建議自備萬用轉接頭。</li><li>飯店及渡假村響應環保，不提供牙刷、牙膏、拖鞋、刮鬍刀、梳子等一次性用品。</li><li>車上無贈送礦泉水，可自帶水壺；景點、飯店與餐廳多可裝水。</li><li>醫療費用高，請自行準備常備藥品；導遊依規定不得提供任何藥品。</li><li>素食安排較不易，建議素食旅客自行準備素食罐頭或泡麵等備用。</li></ul></details>
+      <details><summary>退稅、購物與金錢</summary><ul><li>大邱機場出境退稅只退至信用卡，不能現金退稅，請攜帶可海外刷卡信用卡。</li><li>退稅單請自行妥善保存；出境韓國後若未退到稅，無法補退稅。</li><li>購物站商品若需退貨，需保持完整未拆封並提供原購買收據；返國後 10 日內與旅行社聯繫。</li><li>韓國對金飾、金錶、項鍊等金質物品管制嚴格，如非必要建議少帶。</li><li>參考匯率：1 台幣約 44 韓幣，實際請以當日銀行公告為準。</li></ul></details>
+      <details><summary>安全與通關</summary><ul><li>貴重物品請勿離手，也不要放在遊覽車或餐廳座椅上離開視線範圍。</li><li>住宿飯店請加扣安全鎖；聽到警報器時，請由緊急出口迅速離開。</li><li>海邊戲水前注意海象、天氣與警示旗號；禁止或危險海域不可下水。</li><li>夜間或自由活動自行外出時，請告知領隊或團友行蹤，並注意證件與財物。</li><li>各國海關安檢處皆為管制區，不得拍照及攝影。</li><li>切勿替他人攜帶物品；若物品為禁止、管制或需繳稅項目，攜帶者需自行負責。</li></ul></details>
     </section>
 
     <section class="contact-panel" aria-label="聯絡資訊">
-      <div class="section-head">
-        <h2>聯絡資訊</h2>
-      </div>
-      <a class="contact-link" href="tel:+886933385392">協助人員：0933-385392</a>
+      <div class="section-head"><h2>聯絡資訊</h2></div>
+      <a class="contact-link" href="tel:+886926189627">領隊楊維洲：0926-189627</a>
+      <a class="contact-link" href="tel:+886423220866">台灣連絡處：04-2322-0866</a>
     </section>
 
-    <footer>
-      <span>行程內容依提供之 PDF 摘要整理。頁首照片來源：Wikimedia Commons / KOGL Type 1。</span>
-    </footer>
+    <footer><span>資料來源：0709-13 說明會資料 LIST.pdf。航班、報到與退稅規定仍請以航空公司、領隊與現場公告為準。</span></footer>
   </main>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=20260702"></script>
 </body>
 </html>
