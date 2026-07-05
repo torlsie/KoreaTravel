@@ -26,7 +26,7 @@ const rateStatus = document.querySelector("#rateStatus");
 const weatherGrid = document.querySelector("#weatherGrid");
 const weatherStatus = document.querySelector("#weatherStatus");
 const countdownOutput = document.querySelector("#gatheringCountdown");
-const transferTimeText = "去程機場接送時間：2026/07/09 21:00";
+const transferTimeText = "去程機場接送時間：2026/07/08 21:00";
 
 function renderTransferPickupTime() {
   const firstFlightItem = document.querySelector(".flight-card .compact-list li:first-child");
@@ -42,7 +42,7 @@ function renderTransferPickupTime() {
   }
 
   if (countdownTarget) {
-    countdownTarget.textContent = "目標：2026/07/09 21:00（台灣時間）";
+    countdownTarget.textContent = "目標：2026/07/08 21:00（台灣時間）";
   }
 }
 
@@ -265,7 +265,7 @@ async function loadWeather() {
 loadWeather();
 
 function setupGatheringCountdown() {
-  const target = new Date("2026-07-09T21:00:00+08:00").getTime();
+  const target = new Date("2026-07-08T21:00:00+08:00").getTime();
 
   function pad(value) {
     return String(value).padStart(2, "0");
