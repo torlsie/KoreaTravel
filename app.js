@@ -27,6 +27,7 @@ const weatherGrid = document.querySelector("#weatherGrid");
 const weatherStatus = document.querySelector("#weatherStatus");
 const countdownOutput = document.querySelector("#gatheringCountdown");
 const transferTimeText = "去程機場接送時間：2026/07/08 21:00";
+const transferDriverDetails = ["司機：王偉俍", "電話：0976-042-239", "車牌：RFL-7252"];
 
 function renderTransferPickupTime() {
   const firstFlightItem = document.querySelector(".flight-card .compact-list li:first-child");
@@ -34,7 +35,10 @@ function renderTransferPickupTime() {
   const countdownTarget = document.querySelector(".countdown__target");
 
   if (firstFlightItem) {
-    firstFlightItem.innerHTML = `<strong>接送</strong><span>${transferTimeText}</span>`;
+    firstFlightItem.innerHTML = `<strong>接送</strong><span class="transfer-detail">${[
+      transferTimeText,
+      ...transferDriverDetails
+    ].join("<br>")}</span>`;
   }
 
   if (countdownLabel) {
